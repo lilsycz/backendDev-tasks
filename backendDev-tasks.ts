@@ -1,4 +1,4 @@
-// //skill 1.1 //
+// //-- skill 1.1 --//
 // let studentName:string = "Hsuan";
 // let studentAge:number = 26;
 // let isEnrolled:boolean = true;
@@ -10,7 +10,7 @@
 // console.log (describeStudent(studentName, studentAge));
 
 
-// //skill 1.2//
+// //-- skill 1.2--//
 // let name1:string = "Hsuan";
 // let formal:boolean= false;
 
@@ -20,8 +20,14 @@
 
 // console.log (formatGreeting(name1, formal));
 
-//skill 2.1//
+// //-- skill 2.1--//
 
-let ages:number[]=[8,21.56,34,78];
-const agesInFiveYears:number[] = ages.map((n) => n+5);
-console.log(agesInFiveYears);
+// let ages:number[]=[8,21.56,34,78];
+// const agesInFiveYears:number[] = ages.map((n) => n+5);
+// console.log(agesInFiveYears);
+
+//--skill 2.2--//
+
+let names:string[]=["Max", "Jade", "Josh", "Jake", "Hsuan", "Layla"];
+const shortNames:string[] = names.filter((n)=> n.length <= 4);
+console.log (shortNames);
