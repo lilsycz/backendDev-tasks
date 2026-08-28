@@ -53,17 +53,49 @@
 // console.log (grade);
 
 
-//--skill 3.1--//
-interface Book {
-    title:string;
-    author:string;
-    pages:number;
-}
+// //--skill 3.1--//
+// interface Book {
+//     title:string;
+//     author:string;
+//     pages:number;
+// }
 
-const myBook: Book = {
-    title: "A Brief History of Human",
-    author: "Yuval Noah Harari",
-    pages:55,
+// const myBook: Book = {
+//     title: "A Brief History of Human",
+//     author: "Yuval Noah Harari",
+//     pages:55,
+// };
+
+// console.log (`I read "${myBook.title}".`);
+
+
+//--skill 3.2--//
+interface Address {
+    city:string;
+    postalCode?:number;
 };
 
-console.log (`I read "${myBook.title}".`);
+interface Person {
+    name:string;
+    age:number;
+    address:Address;
+};
+
+const Person0:Person= {
+    name:"Hsuan",
+    age:26,
+    address:{
+        city:"Helsingborg",
+        postalCode:25220,
+    },
+};
+
+const Person1:Person= {
+    name:"Mo",
+    age:25,
+    address:{
+        city:"Copenhagen",
+    },
+};
+
+console.log (`I live in ${Person0.address.city} and my bf lives in ${Person1.address.city}!`);
