@@ -120,7 +120,7 @@
 // console.log (getMoviesByGenre(movies,"SciFi").map ((n)=> n.title));
 
 
-// //--skill 4.1--//
+// //--skill 4.1 --//
 interface Product {
     id:number; name:string; price:number; tags:string[];
 };
@@ -139,10 +139,21 @@ const products: Product[] = [
 // console.log (cheaperOnes(products));
 
 
-//--skill 4.2--//
+// //--skill 4.2--//
+// const workProducts = (products:Product[], tags:string):string[] => {
+//     return products
+//          .filter((n)=>n.tags.includes(tags))
+//          .map ((n) => n.name);
+// }
 
-const workProducts = (products:Product[], tags:string):string[] => {
-    return (products.filter((n)=>n.tags.includes(tags))).map ((n) => n.name);
+// console.log (workProducts(products, "Work"));
+
+
+//--skill 4.3--//
+const moreTag = (products:Product[]):string =>{
+    return products
+        .filter((p)=> p.tags.length >1)
+        .map((p)=> `${p.name} ($${p.price})`)
+        .join(" , ")
 }
-
-console.log (workProducts(products, "Work"));
+console.log(`Multi-tag:`, moreTag(products));
