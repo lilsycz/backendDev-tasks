@@ -69,33 +69,52 @@
 // console.log (`I read "${myBook.title}".`);
 
 
-//--skill 3.2--//
-interface Address {
-    city:string;
-    postalCode?:number;
+// //--skill 3.2--//
+// interface Address {
+//     city:string;
+//     postalCode?:number;
+// };
+
+// interface Person {
+//     name:string;
+//     age:number;
+//     address:Address;
+// };
+
+// const Person0:Person= {
+//     name:"Hsuan",
+//     age:26,
+//     address:{
+//         city:"Helsingborg",
+//         postalCode:25220,
+//     },
+// };
+
+// const Person1:Person= {
+//     name:"Mo",
+//     age:25,
+//     address:{
+//         city:"Copenhagen",
+//     },
+// };
+
+// console.log (`I live in ${Person0.address.city} and my bf lives in ${Person1.address.city}!`);
+
+
+//--skill 3.3--//
+interface Movie {
+    id:number; title:string; rating:number; genres:string[];
+}
+
+const movies:Movie[] = [
+    {id:1, title:"The Truman Show", rating:5, genres:["Comedy", "Satire"]},
+    {id:2, title:"Star Wars", rating:5, genres:["Space Opera", "SciFi"]},
+    {id:3, title:"Obsession", rating:4, genres:["Supernatural", "Horror"]},
+    {id:4, title:"Black Mirror", rating:4.5, genres:["Horror", "SciFi"]},
+];
+
+const getMoviesByGenre = (movies:Movie[], genres:string): Movie[] => {
+    return movies.filter ((n) => n.genres.includes(genres));
 };
 
-interface Person {
-    name:string;
-    age:number;
-    address:Address;
-};
-
-const Person0:Person= {
-    name:"Hsuan",
-    age:26,
-    address:{
-        city:"Helsingborg",
-        postalCode:25220,
-    },
-};
-
-const Person1:Person= {
-    name:"Mo",
-    age:25,
-    address:{
-        city:"Copenhagen",
-    },
-};
-
-console.log (`I live in ${Person0.address.city} and my bf lives in ${Person1.address.city}!`);
+console.log (getMoviesByGenre(movies,"SciFi").map ((n)=> n.title));
