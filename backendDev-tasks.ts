@@ -120,20 +120,29 @@
 // console.log (getMoviesByGenre(movies,"SciFi").map ((n)=> n.title));
 
 
-//--skill 4.1--//
+// //--skill 4.1--//
 interface Product {
     id:number; name:string; price:number; tags:string[];
 };
 
 const products: Product[] = [
-    { id: 1, name: "Wireless Mouse", price: 259.9, tags: ["Electronics", "Accessories"] },
+    { id: 1, name: "Wireless Mouse", price: 259.9, tags: ["Electronics", "Work"] },
     { id: 2, name: "Yoga Mat", price: 195, tags: ["Fitness", "Home"] },
     { id: 3, name: "Ceramic Mug", price: 1200, tags: ["Kitchen"] },
-    { id: 4, name: "Desk Lamp", price: 34.99, tags: ["Home", "Lighting"] },
-    { id: 5, name: "MacBook", price: 11000, tags: ["Electronics", "Office"] },
+    { id: 4, name: "Desk Lamp", price: 34.99, tags: ["Work", "Lighting"] },
+    { id: 5, name: "MacBook", price: 11000, tags: ["Electronics", "Work"] },
 ];
 
-const cheaperOnes = (products:Product[]):Product[] => {
-    return products.filter((n) => n.price <=1000);
-};
-console.log (cheaperOnes(products));
+// const cheaperOnes = (products:Product[]):Product[] => {
+//     return products.filter((n) => n.price <=1000);
+// };
+// console.log (cheaperOnes(products));
+
+
+//--skill 4.2--//
+
+const workProducts = (products:Product[], tags:string):string[] => {
+    return (products.filter((n)=>n.tags.includes(tags))).map ((n) => n.name);
+}
+
+console.log (workProducts(products, "Work"));
