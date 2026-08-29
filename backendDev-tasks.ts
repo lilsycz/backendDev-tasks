@@ -101,20 +101,39 @@
 // console.log (`I live in ${Person0.address.city} and my bf lives in ${Person1.address.city}!`);
 
 
-//--skill 3.3--//
-interface Movie {
-    id:number; title:string; rating:number; genres:string[];
-}
+// //--skill 3.3--//
+// interface Movie {
+//     id:number; title:string; rating:number; genres:string[];
+// }
 
-const movies:Movie[] = [
-    {id:1, title:"The Truman Show", rating:5, genres:["Comedy", "Satire"]},
-    {id:2, title:"Star Wars", rating:5, genres:["Space Opera", "SciFi"]},
-    {id:3, title:"Obsession", rating:4, genres:["Supernatural", "Horror"]},
-    {id:4, title:"Black Mirror", rating:4.5, genres:["Horror", "SciFi"]},
-];
+// const movies:Movie[] = [
+//     {id:1, title:"The Truman Show", rating:5, genres:["Comedy", "Satire"]},
+//     {id:2, title:"Star Wars", rating:5, genres:["Space Opera", "SciFi"]},
+//     {id:3, title:"Obsession", rating:4, genres:["Supernatural", "Horror"]},
+//     {id:4, title:"Black Mirror", rating:4.5, genres:["Horror", "SciFi"]},
+// ];
 
-const getMoviesByGenre = (movies:Movie[], genres:string): Movie[] => {
-    return movies.filter ((n) => n.genres.includes(genres));
+// const getMoviesByGenre = (movies:Movie[], genres:string): Movie[] => {
+//     return movies.filter ((n) => n.genres.includes(genres));
+// };
+
+// console.log (getMoviesByGenre(movies,"SciFi").map ((n)=> n.title));
+
+
+//--skill 4.1--//
+interface Product {
+    id:number; name:string; price:number; tags:string[];
 };
 
-console.log (getMoviesByGenre(movies,"SciFi").map ((n)=> n.title));
+const products: Product[] = [
+    { id: 1, name: "Wireless Mouse", price: 259.9, tags: ["Electronics", "Accessories"] },
+    { id: 2, name: "Yoga Mat", price: 195, tags: ["Fitness", "Home"] },
+    { id: 3, name: "Ceramic Mug", price: 1200, tags: ["Kitchen"] },
+    { id: 4, name: "Desk Lamp", price: 34.99, tags: ["Home", "Lighting"] },
+    { id: 5, name: "MacBook", price: 11000, tags: ["Electronics", "Office"] },
+];
+
+const cheaperOnes = (products:Product[]):Product[] => {
+    return products.filter((n) => n.price <=1000);
+};
+console.log (cheaperOnes(products));
