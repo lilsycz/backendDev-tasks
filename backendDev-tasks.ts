@@ -33,24 +33,24 @@
 // console.log (shortNames);
 
 
-// //--skill 2.3--//
-// let scores:number[]=[32,59,78,2,100,66,97,43];
-// const passingScores:number[] = scores.filter (n=>(n>=50));
-// const grade:string[] = passingScores.map ((score) => {
-//     if (score >= 90)
-//         return "A";
-//     else if (score>=80)
-//         return "B";
-//     else if (score>=70)
-//         return "C";
-//     else if (score>=60)
-//         return "D";
-//     else
-//         return "E";
-// });
-// const failedStudents:number[] = scores.filter (n=>(n<50));
-// console.log (failedStudents.length);
-// console.log (grade);
+//--skill 2.3--//
+let scores:number[]=[32,59,78,2,100,66,97,43];
+const passingScores:number[] = scores.filter (n=>(n>=50));
+const grade:string[] = passingScores.map ((score) => {
+    if (score >= 90)
+        return "A";
+    else if (score>=80)
+        return "B";
+    else if (score>=70)
+        return "C";
+    else if (score>=60)
+        return "D";
+    else
+        return "E";
+});
+const failedStudents:number[] = scores.filter (n=>(n<50));
+console.log (failedStudents.length);
+console.log (grade);
 
 
 // //--skill 3.1--//
@@ -120,23 +120,23 @@
 // console.log (getMoviesByGenre(movies,"SciFi").map ((n)=> n.title));
 
 
-// //--skill 4.1 --//
-// interface Product {
-//     id:number; name:string; price:number; tags:string[];
-// };
+//--skill 4.1 --//
+interface Product {
+    id:number; name:string; price:number; tags:string[];
+};
 
-// const products: Product[] = [
-//     { id: 1, name: "Wireless Mouse", price: 259.9, tags: ["Electronics", "Work"] },
-//     { id: 2, name: "Yoga Mat", price: 195, tags: ["Fitness", "Home"] },
-//     { id: 3, name: "Ceramic Mug", price: 1200, tags: ["Kitchen"] },
-//     { id: 4, name: "Desk Lamp", price: 34.99, tags: ["Work", "Lighting"] },
-//     { id: 5, name: "MacBook", price: 11000, tags: ["Electronics", "Work"] },
-// ];
+const products: Product[] = [
+    { id: 1, name: "Wireless Mouse", price: 259.9, tags: ["Electronics", "Work"] },
+    { id: 2, name: "Yoga Mat", price: 195, tags: ["Fitness", "Home"] },
+    { id: 3, name: "Ceramic Mug", price: 1200, tags: ["Kitchen"] },
+    { id: 4, name: "Desk Lamp", price: 34.99, tags: ["Work", "Lighting"] },
+    { id: 5, name: "MacBook", price: 11000, tags: ["Electronics", "Work"] },
+];
 
-// const cheaperOnes = (products:Product[]):Product[] => {
-//     return products.filter((n) => n.price <=1000);
-// };
-// console.log (cheaperOnes(products));
+const cheaperOnes = (products:Product[]):Product[] => {
+    return products.filter((n) => n.price <=1000);
+};
+console.log (cheaperOnes(products));
 
 
 // //--skill 4.2--//
