@@ -4,8 +4,9 @@ enum Color {
     blue
 };
 
+let color = Color.red;
 const showColor = (color:Color) => {
-    console.log (`You chose ${color}.`)
+    return `You chose ${color}.`
 }
 
-showColor (Color.red);
+console.log(showColor(color));

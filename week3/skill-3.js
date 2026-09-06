@@ -6,7 +6,8 @@ var Color;
     Color[Color["blue"] = 2] = "blue";
 })(Color || (Color = {}));
 ;
+let color = 0;
 const showColor = (color) => {
-    console.log(`You chose ${color}.`);
+    return `You chose ${color}.`;
 };
-showColor(Color.red);
+console.log(showColor(color));
