@@ -1,14 +1,29 @@
+// type helloMessage= (message:string) => void;
+
+
+// const delayedGreeting = (message: string): void => {
+//     setTimeout(() => {
+//         const Hi = `Hi, I'm late!`;
+//         console.log ()
+//     }, 2000);
+// };
+
+// const sayHelloLater = () => {
+//     delayedGreeting(Hi);
+// };
+
 type helloMessage= (message:string) => void;
-const Hi= (greeting: helloMessage) => {
-    greeting(`Hi, I'm late!`)
+
+
+const sayHelloLater = (A: helloMessage): void => {
+    setTimeout(() => {
+        const Hi = `Hi, I'm late!`;
+        A(Hi);
+    }, 2000);
 };
 
-const delayedGreeting = (message: string): void => {
-    console.log(message)
+const printHello: helloMessage = (message: string) => {
+    console.log(message);
 };
 
-const sayHelloLater = () => {
-    Hi(delayedGreeting);
-};
-
-setTimeout(sayHelloLater, 2000);
+sayHelloLater(printHello);
