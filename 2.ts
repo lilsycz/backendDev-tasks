@@ -17,8 +17,8 @@ type helloMessage= (message:string) => void;
 
 const sayHelloLater = (A: helloMessage): void => {
     setTimeout(() => {
-        const Hi = `Hi, I'm late!`;
-        A(Hi);
+        const hi = `Hi, I'm late!`;
+        A(hi);
     }, 2000);
 };
 

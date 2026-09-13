@@ -1,6 +1,10 @@
 type helloFunction= (message:string) => void;
-const greet = (callBack: helloFunction) => {
-    callBack(`Hello from callback!`)
+
+const greet = (callBack: helloFunction): void => {
+    setTimeout(() => {
+        const hi = `Hello from callback!`;
+        callBack(hi);
+    }, 2000);
 };
 
 const log = (message: string): void => {
