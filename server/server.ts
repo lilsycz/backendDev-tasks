@@ -4,10 +4,11 @@ const PORT = 3000;
 
 app.use (express.json());
 
+/*200OK*/
 app.get("/", (req, res) => {
     res.send("Here you can get some useful properties for materials!");
 });
-
+/*200OK*/
 app.get("/materials", (req, res) => {
     res.json({
         message: `Find the materials you like, if they're not in the base, welcome to message me!`,
@@ -24,7 +25,7 @@ app.get("/materials", (req, res) => {
 
     });
 });
-
+/*200OK*/
 app.get("/about", (req, res) => {
     res.json({
         title: `Sustainable Materials API`,
@@ -34,12 +35,13 @@ app.get("/about", (req, res) => {
                     The data can be used as input for material selection, formulation reference, and parametric design workflows.`
     });
 });
-
+/*200OK*/
 app.get("/goals", (req, res) => {
     res.send("Choose sustainable materials — every small change reduces your carbon footprint.");
     /*for returning single objects we can choose res.send */
 });
 
+/*If the route didn't exist, then 404 Not Found*/
 
 app.listen(PORT, () =>{
     console.log(`Server is running on port: ${PORT}!`);
