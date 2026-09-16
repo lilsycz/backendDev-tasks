@@ -27,7 +27,7 @@ app.get("/materials", (req, res) => {
 });
 /*200OK*/
 app.get("/about", (req, res) => {
-    res.json({
+    res.status(200).json({
         title: `Sustainable Materials API`,
         description: `This is a free API for architects and designers to access sustainable material properties. 
                     Built by an architect researching low-carbon 3D-printed building materials, 
@@ -42,6 +42,10 @@ app.get("/goals", (req, res) => {
 });
 
 /*If the route didn't exist, then 404 Not Found*/
+
+app.get("/maintenance", (req, res) => {
+    res.status(503).send("We're down for maintenance, check back soon!");
+});
 
 app.listen(PORT, () =>{
     console.log(`Server is running on port: ${PORT}!`);
