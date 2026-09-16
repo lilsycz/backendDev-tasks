@@ -4,51 +4,65 @@ const PORT = 3000;
 
 app.use (express.json());
 
-/*200OK*/
-app.get("/", (req, res) => {
-    res.send("Here you can get some useful properties for materials!");
-});
-/*200OK*/
-app.get("/materials", (req, res) => {
-    res.json({
-        message: `Find the materials you like, if they're not in the base, welcome to message me!`,
-        categories: {
-            wood: ["Bamboo", "Reclaimed timber", "Cork"],
-            biomaterials: ["Mycelium composite", "Bacterial cellulose", "Chitosan"],
-            bioplastics: ["PLA", "PHA"],
-            plastics: ["PET", "PVC"],
-            metals: ["Recycled steel", "Aluminum"],
-            fibers: ["Hemp", "Flax", "Wool"],
-            composites: ["Concrete"],
-        },
-        timestamp: new Date().toISOString().split("T")[0],
-
-    });
-});
-/*200OK*/
-app.get("/about", (req, res) => {
-    res.status(200).json({
-        title: `Sustainable Materials API`,
-        description: `This is a free API for architects and designers to access sustainable material properties. 
-                    Built by an architect researching low-carbon 3D-printed building materials, 
-                    such as mycelium composites and low-carbon concrete. 
-                    The data can be used as input for material selection, formulation reference, and parametric design workflows.`
-    });
-});
-/*200OK*/
-app.get("/goals", (req, res) => {
-    res.send("Choose sustainable materials — every small change reduces your carbon footprint.");
-    /*for returning single objects we can choose res.send */
-});
-
-/*If the route didn't exist, then 404 Not Found*/
-
-app.get("/maintenance", (req, res) => {
-    res.status(503).send("We're down for maintenance, check back soon!");
-});
-
 app.listen(PORT, () =>{
     console.log(`Server is running on port: ${PORT}!`);
 });
 
+type Party = {
+    id: number;
+    name: string;
+    leader: string;
+    seats: number;
+};
 
+let parties: Party[] = [
+    { id: 1, name: "Socialdemokraterna", leader: "Magdalena Andersson", seats: 106 },
+    { id: 2, name: "Sverigedemokraterna", leader: "Jimmie Åkesson", seats: 70 },
+    { id: 3, name: "Moderaterna", leader: "Ulf Kristersson", seats: 66 },
+    { id: 4, name: "Centerpartiet", leader: "Elisabeth Thand Ringqvist", seats: 24 },
+    { id: 5, name: "Vänsterpartiet", leader: "Nooshi Dadgostar", seats: 21 },
+    { id: 6, name: "Kristdemokraterna", leader: "Ebba Busch", seats: 19 },
+    { id: 7, name: "Miljöpartiet", leader: "Amanda Lind", seats: 18 },
+    { id: 8, name: "Liberalerna", leader: "Simona Mohamsson", seats: 16 },
+];
+
+app.get("/parties", (req, res) => {
+    res.json(parties);
+});
+
+app.post("/parties", (req, res) => {
+    const newParty = {
+        id: parties.length+1,
+        name: req.body.name,
+        leader: req.body.leader,
+        seats: req.body.seats,
+    };
+    if (!newParty.name || !newParty.leader) {
+        return res.status(400).json({message: "Something is missing!"});
+    }
+    parties.push(newParty);
+    res.status(201).json({message: "Party added sucessfully!", parties});
+});
+
+app.get("/parties/seats-total", (req, res) => {
+    const totalParties = parties.reduce((sum,party) => sum + party.seats, 0);
+    res.json({totalParties});
+});
+
+app.put("/parties/:id", (req, res) => {
+    const partyId = parseInt(req.params.id);
+    const party = parties.find((p)=> p.id === partyId);
+    if (!party) {
+        return res.status(404).json({message: "Party not found!"});
+    };
+    party.name = req.body.name || party.name;
+    party.leader = req.body.leader || party.leader;
+    party.seats = req.body.seats || party.seats;
+    res.json({message: "Party updated sucessfully!", parties});
+});
+
+app.delete("/parties/:id", (req, res) => {
+    const partyId = parseInt(req.params.id);
+    parties = parties.filter((p)=> p.id !== partyId);
+    res.json({message: "Party deleted!"});
+});
