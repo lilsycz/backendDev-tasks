@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.ts"
+    "dev": "nodemon --exec tsx server.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "nodemon": "^3.1.14",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }
