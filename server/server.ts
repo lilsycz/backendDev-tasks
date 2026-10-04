@@ -16,7 +16,9 @@ const randomPersonResponseSchema = z.object({
         first: z.string(),
         last: z.string(),
       }),
-      country: z.string(),
+      location: z.object({
+        country: z.string(),
+      }),
     }),
   ),
 });
@@ -36,7 +38,7 @@ app.get("/random-person", async (req, res) => {
         const randomPerson = validatedRandomPerson.data.results[0];
         res.json({
             name: `${randomPerson?.name.first} ${randomPerson?.name.last}`,
-            country: `${randomPerson?.country}`,
+            country: `${randomPerson?.location.country}`,
         });
     } catch (error) {
         res.status(500).json({
