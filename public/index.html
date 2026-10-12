@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materials Library</title>
+<style>
+    body { margin: 0; padding: 24px; background: #3a6ea5; min-height: 100vh;
+            font: 11px Tahoma, "MS Sans Serif", Arial, sans-serif; color: #000; }
+    .window { max-width: 760px; margin: 0 auto; background: #d4d0c8; padding: 3px;
+                box-shadow: inset -1px -1px #404040, inset 1px 1px #d4d0c8,
+                            inset -2px -2px #808080, inset 2px 2px #fff; }
+    .titlebar { display: flex; justify-content: space-between; align-items: center;
+                padding: 3px 4px; color: #fff; font-weight: bold; font-size: 12px;
+                background: linear-gradient(90deg, #0a246a, #a6caf0); }
+    .controls span { display: inline-block; width: 16px; height: 14px; margin-left: 2px;
+                    background: #d4d0c8; color: #000; text-align: center; line-height: 14px;
+                    box-shadow: inset -1px -1px #404040, inset 1px 1px #fff,
+                                inset -2px -2px #808080; }
+    .content { padding: 10px; }
+    form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 8px; }
+    input { padding: 3px 4px; border: 0; background: #fff; font: inherit;
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #808080,
+                        inset -2px -2px #d4d0c8, inset 2px 2px #404040; }
+    button { padding: 4px 14px; border: 0; background: #d4d0c8; font: inherit; cursor: pointer;
+            box-shadow: inset -1px -1px #404040, inset 1px 1px #fff,
+                        inset -2px -2px #808080, inset 2px 2px #d4d0c8; }
+    button:active { box-shadow: inset 1px 1px #404040, inset -1px -1px #fff,
+                                inset 2px 2px #808080; padding: 5px 13px 3px 15px; }
+    #msg { min-height: 1.2em; color: #c00; font-weight: bold; }
+    .grid { background: #fff; padding: 2px;
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #808080,
+                        inset -2px -2px #d4d0c8, inset 2px 2px #404040; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 3px 6px; background: #d4d0c8; font-weight: normal;
+        box-shadow: inset -1px -1px #404040, inset 1px 1px #fff; }
+    td { padding: 2px 6px; }
+    tbody tr:hover td { background: #0a246a; color: #fff; }
+</style>
+</head>
+<body>
+<main class="window">
+    <div class="titlebar">
+        <span>Materials Library</span>
+        <span class="controls"><span>_</span><span>&#9633;</span><span>x</span></span>
+    </div>
+    <div class="content">
+        <form id="form">
+        <input name="name" placeholder="name">
+        <input name="category" placeholder="category">
+        <input name="density_kg_m3" type="number" step="any" placeholder="density kg/m3">
+        <input name="youngs_modulus_gpa" type="number" step="any" placeholder="stiffness GPa">
+        <button type="submit">Add</button>
+        </form>
+        <p id="msg"></p>
+        <div class="grid">
+            <table>
+                <thead><tr><th>Name</th><th>Category</th><th>Density</th><th>GPa</th><th></th></tr></thead>
+                <tbody id="list"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
