@@ -2,6 +2,15 @@ const list = document.getElementById("list");
 const msg = document.getElementById("msg");
 const form = document.getElementById("form");
 
+const errorText = (data) => {
+  if (data.error) {return data.error;}
+  if (data.errors) {
+    const { formErrors, fieldErrors } = data.errors;
+    return [...formErrors, ...Object.values(fieldErrors).flat()].join(" ");
+  }
+  return "Something went wrong";
+};
+
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => `&#${c.charCodeAt(0)};`);
 
 async function load() {
@@ -33,7 +42,7 @@ form.addEventListener("submit", async (e) => {
     body: JSON.stringify(body),
   });
   const data = await res.json();
-  msg.textContent = res.ok ? "" : data.error;
+  msg.textContent = res.ok ? "" : errorText(data);
   if (res.ok) {form.reset();}
   load();
 });
@@ -42,7 +51,7 @@ list.addEventListener("click", async (e) => {
   if (!e.target.dataset.id) {return;}
   const res = await fetch(`/materials/${e.target.dataset.id}`, { method: "DELETE" });
   const data = await res.json();
-  msg.textContent = res.ok ? "" : data.error;
+  msg.textContent = res.ok ? "" : errorText(data);
   load();
 });
 
